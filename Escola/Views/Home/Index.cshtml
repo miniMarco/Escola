@@ -1,0 +1,18 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPadrao.cshtml";
+}
+
+<div class="noticia">
+    <div>Não temos nenhuma notícia para hoje. Não temos nenhuma notícia para hoje. 
+    Não temos nenhuma notícia para hoje. .</div>
+</div>
+
+@Html.Label("Cadastro:")
+@Html.ActionLink("Turmas", "Index", "Turmas") | @Html.ActionLink("Professores", "Index", "Professores") | @Html.ActionLink("Alunos", "Index", "Alunos") | @Html.ActionLink("Disciplinas", "Index", "Disciplinas")
+<hr />
+
+@Html.Label("Lançamento de Notas")
+@Html.ActionLink("Visualizar Turmas", "VisualizarTurmas", "Turmas")
+
+
+@Html.ActionLink("Lançar Nota", "LancarNotas", "Alunos")

@@ -1,0 +1,53 @@
+﻿@model Escola.Models.LoginViewModel
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="body100 "> 
+    <div class="centroLogo">
+        <img src="~/Imagens/logo.png" style="background-color:#fff" />
+    </div>
+    <div class="centro">
+        
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="semBorda">
+                <div class="panel-body">
+                    <div class="form-horizontal">
+                        @if (ViewData.ModelState.Keys.Any(key => ViewData.ModelState[key].Errors.Count() > 0))
+                        {
+                            <div class="alert2 alert-error alert-dismissible">
+                                <div><strong> Usuário ou senha incorretos.</strong></div>
+                                @Html.ValidationSummary(true, "")
+                            </div>
+                        }
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Nome, new { htmlAttributes = new { @class = "form-control noRadius", @placeholder = "Usuário" } })
+                                
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-md-12">
+                                @Html.EditorFor(model => model.Senha, new { htmlAttributes = new { @class = "form-control noRadius", @placeholder = "Senha" } })
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" value="Entrar" class="btn btn-primary botaoEsticado" />
+                </div>
+                <br />
+                <br />
+                <div class="form-group">
+                    <div class="col-md-12" align="center">
+                        @Html.ActionLink("Esqueci minha senha", "renovarSenha", "Account")
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

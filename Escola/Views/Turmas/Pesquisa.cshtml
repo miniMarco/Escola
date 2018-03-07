@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Modelo.Turma>
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Pesquisa</title>
+</head>
+<body>
+    <div> 
+        @foreach (var turma in Model)
+        {
+            <table>
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayFor(item => turma.Descricao)                         
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            @if (turma.Disciplinas == null || turma.Disciplinas.Count == 0)
+                            {
+                                <span>Não há disciplinas cadastradas.</span>
+                            }
+                            else
+                            {
+                                foreach (var disciplina in turma.Disciplinas)
+                                {
+                                    <table>
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    @Html.DisplayFor(itemDiciplina => disciplina.Descricao)
+                                                </th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                }
+                            }
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        }
+        
+    </div>
+</body>
+</html>

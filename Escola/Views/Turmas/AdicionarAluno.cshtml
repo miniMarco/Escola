@@ -1,0 +1,56 @@
+﻿@model Modelo.Turma
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>AdicionarAluno</title>
+</head>
+<body>
+    @using (Html.BeginForm()) 
+    {
+        @Html.HiddenFor(item=> Model.TurmaId)
+        @Html.AntiForgeryToken()
+        <div>
+            @Html.Label(Model.Descricao)
+        </div>
+        <div class="form-horizontal">
+            <h4>Adicionar Aluno</h4>
+            <hr />
+            <div class="form-group">
+                @if (ViewBag.listaAlunos == null)
+                {
+                    <p>Não existe aluno sem turma.</p>
+                }
+                else
+                {
+                    @Html.DropDownList("listaAlunos", null, "", htmlAttributes: new { @class = "form-control " })
+                }
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Create" class="btn btn-default" />
+                </div>
+            </div>
+            <hr />
+            <div class="form-group">
+                @foreach (var aluno in Model.Alunos)
+                {
+                    <div class="col-md-offset-2 col-md-10">
+                        @aluno.Nome
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+</html>

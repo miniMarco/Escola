@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" charset="utf-8" />
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" />
+    <link href="@Url.Content("~/Content/Css.css")" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/1464d45a23.js"></script>
+</head>
+<body>
+    <div class="barra-superior">Marco | @Html.ActionLink("Sair", "Logout", "Account")</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-2 col-md-2">
+                <br />
+                <p><a href=""> <i class="fa fa-home"></i> 1.855.ORL.CITY </a></p>
+                <p><a href=""> <i class="fa fa-phone"></i> 1.855.ORL.CITY </a></p>
+                <p><a href=""> <i class="fa fa-phone"></i> 1.855.ORL.CITY </a></p>
+                <p><a href=""> <i class="fa fa-phone"></i> 1.855.ORL.CITY </a></p>
+                <p><a href=""> <i class="fa fa-phone"></i> 1.855.ORL.CITY </a></p>
+
+                <ul class="nav flex-column">
+                    
+                    <li role="presentation" class="active nav-item"><a href="#">Home</a></li>
+                    <li role="presentation" class="nav-item"><a href="#">Home</a></li>
+                </ul> 
+            </div>
+            <div class="col-xs-10 col-md-10">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/bootstrap.js"></script>
+    <script src="~/Scripts/jquery-3.0.0.js"> </script>
+</body>
+</html>

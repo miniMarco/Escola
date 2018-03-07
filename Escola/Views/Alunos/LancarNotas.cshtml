@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Modelo.Turma>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>LancarNotas</title>
+</head>
+<body>
+@foreach (var turma in Model)
+{ 
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayName(turma.Descricao)
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>1º Semestre</th>
+                                <th></th>
+                                <th></th>
+                                <th>2º Semestre</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <th>Nome</th>
+                                <th>Nota 1</th>
+                                <th>Nota 2</th>
+                                <th>Subtotal</th>
+                                <th>Nota 3</th>
+                                <th>Nota 4</th>
+                                <th>Subtotal</th>
+                                <th>Nota Final</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var aluno in turma.Alunos)
+                            {
+                                <tr>
+                                    <td>@aluno.Nome</td>
+                                    @foreach (var nota in aluno.Notas)
+                                    {
+                                        <td>@nota.Nota1</td>
+                                        <td>@nota.Nota2</td>
+                                        <td>@nota.Nota1.Value + @nota.Nota2.Value</td>
+                                        <td>@nota.Nota3</td>
+                                        <td>@nota.Nota4</td>
+                                        <td>@nota.Nota3.Value + @nota.Nota4.Value</td>
+                                        <td>@nota.Nota1.Value + @nota.Nota2.Value + @nota.Nota3.Value + @nota.Nota4.Value</td>
+                                        
+                                    }
+                                    <td>@Html.ActionLink("Inserir Nota", "InserirNota", new { id = aluno.AlunoId })</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+}
+</body>
+</html>

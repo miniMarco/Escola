@@ -1,0 +1,72 @@
+﻿@model Escola.Models.AlunoViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>InserirNota</title>
+    <script src="~/Scripts/jquery-1.9.1.min.js"> </script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(model => Model.AlunoId)
+        @Html.HiddenFor(model => Model.DisciplinaId)
+        <div>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>1º Semestre</th>
+                        <th></th>
+                        <th>2º Semestre</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Nota 1</th>
+                        <th>Nota 2</th>
+                        <th>Nota 3</th>
+                        <th>Nota 4</th>
+                    </tr>
+                </thead>
+                <tbody>
+                        <tr>
+                            <td>@Model.NomeAluno</td>
+                            @{
+                                <td>@Html.EditorFor(item => Model.Nota.Nota1)</td>
+                                <td>@Html.EditorFor(item => Model.Nota.Nota2)</td>
+                                <td>@Html.EditorFor(item => Model.Nota.Nota4)</td>
+                                <td>@Html.EditorFor(item => Model.Nota.Nota5)</td>
+                            }
+                        </tr>
+                    
+                </tbody>
+            </table>
+        </div>
+
+
+
+        <div class="form-horizontal">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Save" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    }
+    
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>
+</body>
+
+</html>
